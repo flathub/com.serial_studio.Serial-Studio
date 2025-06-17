@@ -53,6 +53,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
+      - -DPRODUCTION_OPTIMIZATION=OFF
     post-install:
       - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
       - desktop-file-edit --set-key='X-AppImage-Name'    --set-value='' ${FLATPAK_DEST}/share/applications/serial-studio.desktop
