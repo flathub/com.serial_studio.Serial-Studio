@@ -67,8 +67,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.1.3
-        commit: b1176e46b5e5a6488701b0786c42dd6a86fcddac
+        tag: v3.1.5
+        commit: 4705197d1349216612f2ceee178cf42dce36be58
         x-checker-data:
           is-main-source: true
           type: json
