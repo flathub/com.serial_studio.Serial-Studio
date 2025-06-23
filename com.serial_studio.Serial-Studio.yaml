@@ -26,22 +26,6 @@ cleanup:
   - /mkspecs
   - /lib/*-linux-gnu
 modules:
-  - name: qtmqtt
-    buildsystem: cmake-ninja
-    sources:
-      - type: git
-        url: https://github.com/qt/qtmqtt.git
-        tag: v6.9.0
-        commit: f3ef845e68fd5887b8518582546137d4635d552a
-
-  - name: qtserialbus
-    buildsystem: cmake-ninja
-    sources:
-      - type: git
-        url: https://github.com/qt/qtserialbus.git
-        tag: v6.9.0
-        commit: e547637195589dea21094d670c675b9793197b73
-
   - name: qt6-graphs
     buildsystem: cmake-ninja
     sources:
@@ -54,6 +38,7 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DPRODUCTION_OPTIMIZATION=OFF
+      - -DBUILD_GPL3=ON
     post-install:
       - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
       - desktop-file-edit --set-key='X-AppImage-Name'    --set-value='' ${FLATPAK_DEST}/share/applications/serial-studio.desktop
@@ -67,8 +52,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.1.5
-        commit: 4705197d1349216612f2ceee178cf42dce36be58
+        tag: v3.1.6
+        commit: 8587362422c818d20a96e63af1e175c76d99dc6e
         x-checker-data:
           is-main-source: true
           type: json
