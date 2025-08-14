@@ -37,7 +37,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DPRODUCTION_OPTIMIZATION=OFF
+      - -DPRODUCTION_OPTIMIZATION=ON
       - -DBUILD_GPL3=ON
     post-install:
       - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
