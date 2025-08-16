@@ -23,15 +23,18 @@ cleanup:
   - /lib/modules
   - /lib/qml
   - /lib/sbom
+  - /lib/cmake
+  - /lib/*.a
   - /mkspecs
   - /lib/*-linux-gnu
 modules:
   - name: qt6-graphs
     buildsystem: cmake-ninja
     sources:
-      - type: archive
-        url: https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qtgraphs-everywhere-src-6.9.0.tar.xz
-        sha256: 9e5b08cdc1934b2525b5586a458861c180ee9f3aaccf6c36bac37b502afaa0c6
+      - type: git
+        url: https://github.com/qt/qtgraphs.git
+        tag: v6.9.0
+        commit: ba29aa033b1878429dd1f12d783c57e516f6f32a
 
   - name: serial-studio
     buildsystem: cmake-ninja
