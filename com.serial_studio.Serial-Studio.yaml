@@ -40,7 +40,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DPRODUCTION_OPTIMIZATION=OFF
+      - -DPRODUCTION_OPTIMIZATION=ON
       - -DBUILD_GPL3=ON
       - -DUSE_SYSTEM_ZLIB=ON 
       - -DUSE_SYSTEM_EXPAT=ON
@@ -56,7 +56,7 @@ modules:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
         tag: v3.2.0
-        commit: 5ee248fc5cd6b6cee0f4b30914b8b35bc715cf98
+        commit: e935c8051f275e33dcdbd8d1289daa36c74006ca
         x-checker-data:
           is-main-source: true
           type: json
