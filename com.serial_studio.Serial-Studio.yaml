@@ -42,6 +42,8 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DPRODUCTION_OPTIMIZATION=ON
       - -DBUILD_GPL3=ON
+      - -DUSE_SYSTEM_ZLIB=ON 
+      - -DUSE_SYSTEM_EXPAT=ON
     post-install:
       - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
       - |
