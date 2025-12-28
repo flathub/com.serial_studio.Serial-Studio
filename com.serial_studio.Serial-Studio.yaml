@@ -40,7 +40,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DPRODUCTION_OPTIMIZATION=ON
+      - -DPRODUCTION_OPTIMIZATION=OFF
       - -DBUILD_GPL3=ON
       - -DUSE_SYSTEM_ZLIB=ON 
       - -DUSE_SYSTEM_EXPAT=ON
