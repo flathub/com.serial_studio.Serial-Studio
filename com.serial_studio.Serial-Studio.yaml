@@ -66,4 +66,4 @@ modules:
           timestamp-query: .published_at
       - type: shell
         commands:
-          - sed -i -e '/# Qt Deployment/,$d' app/CMakeLists.txt
+          - sed -i -e '/# Qt automatic deployment/,$d' app/CMakeLists.txt
