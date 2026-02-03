@@ -42,7 +42,7 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DPRODUCTION_OPTIMIZATION=ON
       - -DBUILD_GPL3=ON
-      - -DUSE_SYSTEM_ZLIB=ON 
+      - -DUSE_SYSTEM_ZLIB=ON
       - -DUSE_SYSTEM_EXPAT=ON
     post-install:
       - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
@@ -55,8 +55,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.2.1
-        commit: e5464dae4488d46c01d98edc009585ae94c2fc5c
+        tag: v3.2.3
+        commit: c374e74bb9680366d1f9b9dc19fbc64101ac04c8
         x-checker-data:
           is-main-source: true
           type: json
@@ -66,4 +66,4 @@ modules:
           timestamp-query: .published_at
       - type: shell
         commands:
-          - sed -i -e '/# Qt Deployment/,$d' app/CMakeLists.txt
+          - sed -i -e '/# Qt automatic deployment/,$d' app/CMakeLists.txt
