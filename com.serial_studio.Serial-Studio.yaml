@@ -28,6 +28,13 @@ cleanup:
   - /mkspecs
   - /lib/*-linux-gnu
 modules:
+  - name: qtwebview
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/qt/qtwebview.git
+        tag: v6.9.0
+        commit: 93adf4e67859fa50f3800985ff96a188a06719ec
   - name: qt6-graphs
     buildsystem: cmake-ninja
     sources:
@@ -55,8 +62,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.2.4
-        commit: 35424645f5e3a78b69154705e3d68520dc87e01e
+        tag: v3.2.5
+        commit: 16d1bd5809c147cd4ad6271ecab95ef106566aa8
         x-checker-data:
           is-main-source: true
           type: json
