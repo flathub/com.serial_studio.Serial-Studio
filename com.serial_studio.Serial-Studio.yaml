@@ -28,6 +28,13 @@ cleanup:
   - /mkspecs
   - /lib/*-linux-gnu
 modules:
+  - name: qtwebview
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/qt/qtwebview.git
+        tag: v6.9.0
+        commit: 93adf4e67859fa50f3800985ff96a188a06719ec
   - name: qt6-graphs
     buildsystem: cmake-ninja
     sources:
