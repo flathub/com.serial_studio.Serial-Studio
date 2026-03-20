@@ -28,7 +28,7 @@ cleanup:
   - /mkspecs
   - /lib/*-linux-gnu
 modules:
-  - name: qtwebview
+  - name: qtwebengine
     buildsystem: cmake-ninja
     sources:
       - type: git
