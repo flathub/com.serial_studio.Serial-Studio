@@ -6,6 +6,7 @@ command: serial-studio-gpl3
 separate-locales: false
 rename-icon: serial-studio-gpl3
 base: io.qt.qtwebengine.BaseApp
+base-version: '6.9'
 rename-desktop-file: serial-studio-gpl3.desktop
 rename-appdata-file: serial-studio.metainfo.xml
 
@@ -18,6 +19,7 @@ finish-args:
   - --allow=bluetooth
   - --system-talk-name=org.bluez
   - --filesystem=xdg-documents
+  - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
 cleanup:
   - /include
   - /lib/metatypes
@@ -28,6 +30,8 @@ cleanup:
   - /lib/*.a
   - /mkspecs
   - /lib/*-linux-gnu
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 modules:
   - name: qt6-graphs
     buildsystem: cmake-ninja
