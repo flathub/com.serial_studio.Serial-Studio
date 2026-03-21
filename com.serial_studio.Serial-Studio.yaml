@@ -5,6 +5,8 @@ sdk: org.kde.Sdk
 command: serial-studio-gpl3
 separate-locales: false
 rename-icon: serial-studio-gpl3
+base: io.qt.qtwebengine.BaseApp
+base-version: '6.9'
 rename-desktop-file: serial-studio-gpl3.desktop
 rename-appdata-file: serial-studio.metainfo.xml
 
@@ -17,6 +19,7 @@ finish-args:
   - --allow=bluetooth
   - --system-talk-name=org.bluez
   - --filesystem=xdg-documents
+  - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
 cleanup:
   - /include
   - /lib/metatypes
@@ -27,14 +30,9 @@ cleanup:
   - /lib/*.a
   - /mkspecs
   - /lib/*-linux-gnu
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 modules:
-  - name: qtwebview
-    buildsystem: cmake-ninja
-    sources:
-      - type: git
-        url: https://github.com/qt/qtwebview.git
-        tag: v6.9.0
-        commit: 93adf4e67859fa50f3800985ff96a188a06719ec
   - name: qt6-graphs
     buildsystem: cmake-ninja
     sources:
@@ -62,8 +60,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.2.5
-        commit: 16d1bd5809c147cd4ad6271ecab95ef106566aa8
+        tag: v3.2.6
+        commit: 4e155eda6fe90b2da7b1d880951fc5b20e886606
         x-checker-data:
           is-main-source: true
           type: json
