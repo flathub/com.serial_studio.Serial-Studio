@@ -5,6 +5,7 @@ sdk: org.kde.Sdk
 command: serial-studio-gpl3
 separate-locales: false
 rename-icon: serial-studio-gpl3
+base: io.qt.qtwebengine.BaseApp
 rename-desktop-file: serial-studio-gpl3.desktop
 rename-appdata-file: serial-studio.metainfo.xml
 
@@ -28,8 +29,6 @@ cleanup:
   - /mkspecs
   - /lib/*-linux-gnu
 modules:
-  - name: io.qt.qtwebengine.BaseApp
-    buildsystem: cmake-ninja
   - name: qt6-graphs
     buildsystem: cmake-ninja
     sources:
