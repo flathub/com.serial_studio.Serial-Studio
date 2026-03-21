@@ -1,6 +1,6 @@
 app-id: com.serial_studio.Serial-Studio
 runtime: org.kde.Platform
-runtime-version: '6.9.0'
+runtime-version: '6.9'
 sdk: org.kde.Sdk
 command: serial-studio-gpl3
 separate-locales: false
