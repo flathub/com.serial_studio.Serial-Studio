@@ -9,6 +9,9 @@ base: io.qt.qtwebengine.BaseApp
 base-version: '6.9'
 rename-desktop-file: serial-studio-gpl3.desktop
 rename-appdata-file: serial-studio.metainfo.xml
+rename-mime-file: serial-studio-ssproj.xml
+rename-mime-icons:
+  - serial-studio
 
 finish-args:
   - --share=ipc
@@ -56,6 +59,7 @@ modules:
         for s in {32,64,128,256,512}; do
           rsvg-convert "${icon_in}" -w "${s}" -h "${s}" -a -f png -o "${s}.png"
           install -Dm644 "${s}.png" "${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/apps/serial-studio-gpl3.png"
+          install -Dm644 "${s}.png" "${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/mimetypes/serial-studio.png"
         done
     sources:
       - type: git
