@@ -12,17 +12,16 @@ rename-appdata-file: serial-studio.metainfo.xml
 rename-mime-file: serial-studio-ssproj.xml
 rename-mime-icons:
   - serial-studio
-
 finish-args:
-  - --share=ipc
-  - --share=network
-  - --socket=wayland
-  - --socket=fallback-x11
-  - --device=all
-  - --allow=bluetooth
-  - --system-talk-name=org.bluez
-  - --filesystem=xdg-documents
-  - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
+  - '--share=ipc'
+  - '--share=network'
+  - '--socket=wayland'
+  - '--socket=fallback-x11'
+  - '--device=all'
+  - '--allow=bluetooth'
+  - '--system-talk-name=org.bluez'
+  - '--filesystem=xdg-documents'
+  - '--env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess'
 cleanup:
   - /include
   - /lib/metatypes
@@ -40,20 +39,73 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: git
-        url: https://github.com/qt/qtgraphs.git
+        url: 'https://github.com/qt/qtgraphs.git'
         tag: v6.9.0
         commit: ba29aa033b1878429dd1f12d783c57e516f6f32a
-
+  - name: abseil-cpp
+    buildsystem: cmake-ninja
+    config-opts:
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DCMAKE_POSITION_INDEPENDENT_CODE=ON'
+      - '-DABSL_PROPAGATE_CXX_STD=ON'
+      - '-DCMAKE_CXX_STANDARD=17'
+    sources:
+      - type: git
+        url: 'https://github.com/abseil/abseil-cpp.git'
+        tag: '20240722.0'
+  - name: protobuf
+    buildsystem: cmake-ninja
+    config-opts:
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DCMAKE_POSITION_INDEPENDENT_CODE=ON'
+      - '-Dprotobuf_BUILD_TESTS=OFF'
+      - '-Dprotobuf_ABSL_PROVIDER=package'
+    sources:
+      - type: git
+        url: 'https://github.com/protocolbuffers/protobuf.git'
+        tag: v28.3
+  - name: re2
+    buildsystem: cmake-ninja
+    config-opts:
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DCMAKE_POSITION_INDEPENDENT_CODE=ON'
+      - '-DRE2_BUILD_TESTING=OFF'
+    sources:
+      - type: git
+        url: 'https://github.com/google/re2.git'
+        tag: '2024-07-02'
+  - name: grpc
+    buildsystem: cmake-ninja
+    config-opts:
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DCMAKE_POSITION_INDEPENDENT_CODE=ON'
+      - '-DgRPC_BUILD_TESTS=OFF'
+      - '-DgRPC_BUILD_GRPC_CSHARP_PLUGIN=OFF'
+      - '-DgRPC_BUILD_GRPC_NODE_PLUGIN=OFF'
+      - '-DgRPC_BUILD_GRPC_OBJECTIVE_C_PLUGIN=OFF'
+      - '-DgRPC_BUILD_GRPC_PHP_PLUGIN=OFF'
+      - '-DgRPC_BUILD_GRPC_PYTHON_PLUGIN=OFF'
+      - '-DgRPC_BUILD_GRPC_RUBY_PLUGIN=OFF'
+      - '-DgRPC_ABSL_PROVIDER=package'
+      - '-DgRPC_PROTOBUF_PROVIDER=package'
+      - '-DgRPC_RE2_PROVIDER=package'
+      - '-DgRPC_SSL_PROVIDER=package'
+      - '-DgRPC_ZLIB_PROVIDER=package'
+    sources:
+      - type: git
+        url: 'https://github.com/grpc/grpc.git'
+        tag: v1.67.1
   - name: serial-studio
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DPRODUCTION_OPTIMIZATION=ON
-      - -DBUILD_GPL3=ON
-      - -DUSE_SYSTEM_ZLIB=ON
-      - -DUSE_SYSTEM_EXPAT=ON
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DPRODUCTION_OPTIMIZATION=ON'
+      - '-DBUILD_GPL3=ON'
+      - '-DUSE_SYSTEM_ZLIB=ON'
+      - '-DUSE_SYSTEM_EXPAT=ON'
+      - '-DENABLE_GRPC=ON'
     post-install:
-      - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
+      - 'mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib'
       - |
         icon_in="${FLATPAK_DEST}/share/pixmaps/serial-studio-gpl3.svg"
         for s in {32,64,128,256,512}; do
@@ -63,16 +115,17 @@ modules:
         done
     sources:
       - type: git
-        url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.2.6
-        commit: 4e155eda6fe90b2da7b1d880951fc5b20e886606
+        url: 'https://github.com/Serial-Studio/Serial-Studio.git'
+        tag: v3.2.7
+        commit: c10ea071f9ae224689e4f0d016d5c93ccedaaaa4
         x-checker-data:
           is-main-source: true
           type: json
-          url: https://api.github.com/repos/Serial-Studio/Serial-Studio/releases/latest
+          url: >-
+            https://api.github.com/repos/Serial-Studio/Serial-Studio/releases/latest
           tag-query: .tag_name
           version-query: $tag | sub("^v"; "")
           timestamp-query: .published_at
       - type: shell
         commands:
-          - sed -i -e '/# Qt automatic deployment/,$d' app/CMakeLists.txt
+          - 'sed -i -e ''/# Qt automatic deployment/,$d'' app/CMakeLists.txt'
