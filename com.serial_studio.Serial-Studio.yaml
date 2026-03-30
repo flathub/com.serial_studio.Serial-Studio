@@ -44,6 +44,63 @@ modules:
         tag: v6.9.0
         commit: ba29aa033b1878429dd1f12d783c57e516f6f32a
 
+  - name: abseil-cpp
+     buildsystem: cmake-ninja
+     config-opts:
+       - -DCMAKE_BUILD_TYPE=Release
+       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+       - -DABSL_PROPAGATE_CXX_STD=ON
+       - -DCMAKE_CXX_STANDARD=17
+     sources:
+       - type: git
+         url: https://github.com/abseil/abseil-cpp.git
+         tag: '20240722.0'
+
+   - name: protobuf
+     buildsystem: cmake-ninja
+     config-opts:
+       - -DCMAKE_BUILD_TYPE=Release
+       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+       - -Dprotobuf_BUILD_TESTS=OFF
+       - -Dprotobuf_ABSL_PROVIDER=package
+     sources:
+       - type: git
+         url: https://github.com/protocolbuffers/protobuf.git
+         tag: v28.3
+
+   - name: re2
+     buildsystem: cmake-ninja
+     config-opts:
+       - -DCMAKE_BUILD_TYPE=Release
+       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+       - -DRE2_BUILD_TESTING=OFF
+     sources:
+       - type: git
+         url: https://github.com/google/re2.git
+         tag: '2024-07-02'
+
+   - name: grpc
+     buildsystem: cmake-ninja
+     config-opts:
+       - -DCMAKE_BUILD_TYPE=Release
+       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+       - -DgRPC_BUILD_TESTS=OFF
+       - -DgRPC_BUILD_GRPC_CSHARP_PLUGIN=OFF
+       - -DgRPC_BUILD_GRPC_NODE_PLUGIN=OFF
+       - -DgRPC_BUILD_GRPC_OBJECTIVE_C_PLUGIN=OFF
+       - -DgRPC_BUILD_GRPC_PHP_PLUGIN=OFF
+       - -DgRPC_BUILD_GRPC_PYTHON_PLUGIN=OFF
+       - -DgRPC_BUILD_GRPC_RUBY_PLUGIN=OFF
+       - -DgRPC_ABSL_PROVIDER=package
+       - -DgRPC_PROTOBUF_PROVIDER=package
+       - -DgRPC_RE2_PROVIDER=package
+       - -DgRPC_SSL_PROVIDER=package
+       - -DgRPC_ZLIB_PROVIDER=package
+     sources:
+       - type: git
+         url: https://github.com/grpc/grpc.git
+         tag: v1.67.1
+
   - name: serial-studio
     buildsystem: cmake-ninja
     config-opts:
@@ -52,6 +109,8 @@ modules:
       - -DBUILD_GPL3=ON
       - -DUSE_SYSTEM_ZLIB=ON
       - -DUSE_SYSTEM_EXPAT=ON
+      - -DENABLE_GRPC=ON
+  
     post-install:
       - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
       - |
@@ -61,11 +120,12 @@ modules:
           install -Dm644 "${s}.png" "${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/apps/serial-studio-gpl3.png"
           install -Dm644 "${s}.png" "${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/mimetypes/serial-studio.png"
         done
+    
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.2.6
-        commit: 4e155eda6fe90b2da7b1d880951fc5b20e886606
+        tag: v3.2.7
+        commit: c10ea071f9ae224689e4f0d016d5c93ccedaaaa4
         x-checker-data:
           is-main-source: true
           type: json
