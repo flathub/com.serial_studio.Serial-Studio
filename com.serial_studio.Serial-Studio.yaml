@@ -1,12 +1,12 @@
 app-id: com.serial_studio.Serial-Studio
 runtime: org.kde.Platform
-runtime-version: '6.10'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 command: serial-studio-gpl3
 separate-locales: false
 rename-icon: serial-studio-gpl3
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.10'
+base-version: '6.11'
 rename-desktop-file: serial-studio-gpl3.desktop
 rename-appdata-file: serial-studio.metainfo.xml
 rename-mime-file: serial-studio-ssproj.xml
@@ -40,8 +40,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/qt/qtgraphs.git
-        tag: v6.10.3
-        commit: 6904a774600801aa2931413e47659ae70faf3e8e
+        tag: v6.11.1
+        commit: 474c213e7702c748db9bb04260a272ad6768dd38
 
   - name: abseil-cpp
     buildsystem: cmake-ninja
@@ -110,6 +110,7 @@ modules:
       - -DUSE_SYSTEM_ZLIB=ON
       - -DUSE_SYSTEM_EXPAT=ON
       - -DENABLE_GRPC=ON
+      - -DSS_USE_MIMALLOC=OFF
     post-install:
       - 'mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib'
       - |
@@ -122,8 +123,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.2.7
-        commit: c10ea071f9ae224689e4f0d016d5c93ccedaaaa4
+        commit: 695ee6de281ec92dee51f2b3910a0b72d1dc82aa
         x-checker-data:
           is-main-source: true
           type: json
