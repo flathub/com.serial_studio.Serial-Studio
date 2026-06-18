@@ -110,6 +110,7 @@ modules:
       - -DUSE_SYSTEM_ZLIB=ON
       - -DUSE_SYSTEM_EXPAT=ON
       - -DENABLE_GRPC=ON
+      - -DSS_USE_MIMALLOC=OFF
     post-install:
       - 'mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib'
       - |
@@ -122,8 +123,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        tag: v3.2.7
-        commit: c10ea071f9ae224689e4f0d016d5c93ccedaaaa4
+        commit: 695ee6de281ec92dee51f2b3910a0b72d1dc82aa
         x-checker-data:
           is-main-source: true
           type: json
