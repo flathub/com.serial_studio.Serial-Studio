@@ -112,7 +112,7 @@ modules:
       - -DENABLE_GRPC=ON
       - -DSS_USE_MIMALLOC=OFF
     post-install:
-      - 'mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib'
+      - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
       - |
         icon_in="${FLATPAK_DEST}/share/pixmaps/serial-studio-gpl3.svg"
         for s in {32,64,128,256,512}; do
@@ -123,7 +123,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        commit: 695ee6de281ec92dee51f2b3910a0b72d1dc82aa
+        commit: cf0078af46882fa8f6b729dbbf7076d94e51f60f
         x-checker-data:
           is-main-source: true
           type: json
@@ -132,6 +132,7 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("^v"; "")
           timestamp-query: .published_at
+        tag: v4.0.1
       - type: shell
         commands:
-          - 'sed -i -e ''/# Qt automatic deployment/,$d'' app/CMakeLists.txt'
+          - sed -i -e '/# Qt automatic deployment/,$d' app/CMakeLists.txt
