@@ -110,7 +110,7 @@ modules:
       - -DUSE_SYSTEM_ZLIB=ON
       - -DUSE_SYSTEM_EXPAT=ON
       - -DENABLE_GRPC=ON
-      - -DSS_USE_MIMALLOC=OFF
+      - -DFETCHCONTENT_SOURCE_DIR_MIMALLOC=/run/build/serial-studio/mimalloc-src
     post-install:
       - mv ${FLATPAK_DEST}/lib/*-linux-gnu/*.so* ${FLATPAK_DEST}/lib
       - |
@@ -133,6 +133,10 @@ modules:
           version-query: $tag | sub("^v"; "")
           timestamp-query: .published_at
         tag: v4.0.1
+      - type: archive
+        url: https://github.com/microsoft/mimalloc/archive/v2.1.9/mimalloc-v2.1.9.tar.gz
+        sha256: dd8ff701691f19bf4e225d42ef0d3d5e6ca0e03498ee4f044a0402e4697e4a20
+        dest: mimalloc-src
       - type: shell
         commands:
           - sed -i -e '/# Qt automatic deployment/,$d' app/CMakeLists.txt
