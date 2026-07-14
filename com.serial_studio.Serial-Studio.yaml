@@ -123,7 +123,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        commit: 50b3ce7fc9e0a72585cfa3bdccb7a1c92dde7493
+        commit: 639daafb2fe7d324c3b2d5583d2514c8c470676f
         x-checker-data:
           is-main-source: true
           type: json
@@ -132,7 +132,7 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("^v"; "")
           timestamp-query: .published_at
-        tag: v4.0.2
+        tag: v4.0.3
       - type: archive
         url: https://github.com/microsoft/mimalloc/archive/v2.1.9/mimalloc-v2.1.9.tar.gz
         sha256: dd8ff701691f19bf4e225d42ef0d3d5e6ca0e03498ee4f044a0402e4697e4a20
