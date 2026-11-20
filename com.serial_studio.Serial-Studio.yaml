@@ -134,8 +134,8 @@ modules:
           timestamp-query: .published_at
         tag: v4.2.2
       - type: archive
-        url: https://github.com/microsoft/mimalloc/archive/v2.1.9/mimalloc-v2.1.9.tar.gz
-        sha256: dd8ff701691f19bf4e225d42ef0d3d5e6ca0e03498ee4f044a0402e4697e4a20
+        url: https://github.com/microsoft/mimalloc/archive/v3.4.5/mimalloc-v3.4.5.tar.gz
+        sha256: 19a43af0645c57d348e729d5b31e23e912582911bb1047f795790834d3416221
         dest: mimalloc-src
       - type: shell
         commands:
