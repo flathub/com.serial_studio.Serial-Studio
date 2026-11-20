@@ -1,12 +1,12 @@
 app-id: com.serial_studio.Serial-Studio
 runtime: org.kde.Platform
-runtime-version: '6.10'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 command: serial-studio-gpl3
 separate-locales: false
 rename-icon: serial-studio-gpl3
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.10'
+base-version: '6.11'
 rename-desktop-file: serial-studio-gpl3.desktop
 rename-appdata-file: serial-studio.metainfo.xml
 rename-mime-file: serial-studio-ssproj.xml
@@ -40,8 +40,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/qt/qtgraphs.git
-        tag: v6.10.3
-        commit: 6904a774600801aa2931413e47659ae70faf3e8e
+        tag: v6.11.3
+        commit: e6860ac0eafb999fd9da86cdb92e7362a0cd133c
 
   - name: abseil-cpp
     buildsystem: cmake-ninja
@@ -123,7 +123,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Serial-Studio/Serial-Studio.git
-        commit: 639daafb2fe7d324c3b2d5583d2514c8c470676f
+        commit: 241933f50a22436986fada7bb1034b7d9d1b93b8
         x-checker-data:
           is-main-source: true
           type: json
@@ -132,7 +132,7 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("^v"; "")
           timestamp-query: .published_at
-        tag: v4.0.3
+        tag: v4.2.2
       - type: archive
         url: https://github.com/microsoft/mimalloc/archive/v2.1.9/mimalloc-v2.1.9.tar.gz
         sha256: dd8ff701691f19bf4e225d42ef0d3d5e6ca0e03498ee4f044a0402e4697e4a20
