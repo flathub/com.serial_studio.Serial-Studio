@@ -139,4 +139,4 @@ modules:
         dest: mimalloc-src
       - type: shell
         commands:
-          - sed -i -e '/# Qt automatic deployment/,$d' app/CMakeLists.txt
+          - sed -i -e '/^set(deploy_tool_options_arg/,$d' app/CMakeLists.txt
